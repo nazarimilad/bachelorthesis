@@ -9,11 +9,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: LaTeX compilation
+    - name: compile bachelor thesis proposition
       uses: xu-cheng/latex-action@1.2.1
       with:
           root_file: nazari_milad_voorstel.tex
           working_directory: ./voorstel
+    - name: compile bachelor thesis
+      uses: xu-cheng/latex-action@1.2.1
+      with:
+          root_file: bachproef-tin.tex
+          working_directory: ./bachelorproef
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1.0.0
@@ -24,14 +29,23 @@ jobs:
           release_name: Release
           draft: false
           prerelease: false
-    - name: Upload voorstel
-      id: upload-release-asset 
+    - name: Upload bachelor thesis proposition
+      id: upload-release-bachelor-thesis-proposition 
       uses: actions/upload-release-asset@v1.0.1
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
         asset_path: ./voorstel/nazari_milad_voorstel.pdf
-        asset_name: nazari_milad_voorstel.pdf
+        asset_name: Nazari_Milad_bachelorproef_voorstel.pdf
         asset_content_type: application/pdf
-          
+    - name: Upload bachelor thesis
+      id: upload-release-asset-bachelor-thesis 
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./bachelorproef/bachproef-tin.pdf
+        asset_name: Nazari_Milad_bachelorproef.pdf
+        asset_content_type: application/pdf
