@@ -1,0 +1,97 @@
+%==============================================================================
+% Sjabloon onderzoeksvoorstel bachelorproef
+%==============================================================================
+% Gebaseerd op LaTeX-sjabloon ‘Stylish Article’ (zie voorstel.cls)
+% Auteur: Jens Buysse, Bert Van Vreckem
+%
+% Compileren in TeXstudio:
+%
+% - Zorg dat Biber de bibliografie compileert (en niet Biblatex)
+%   Options > Configure > Build > Default Bibliography Tool: "txs:///biber"
+% - F5 om te compileren en het resultaat te bekijken.
+% - Als de bibliografie niet zichtbaar is, probeer dan F5 - F8 - F5
+%   Met F8 compileer je de bibliografie apart.
+%
+% Als je JabRef gebruikt voor het bijhouden van de bibliografie, zorg dan
+% dat je in ``biblatex''-modus opslaat: File > Switch to BibLaTeX mode.
+
+\documentclass{voorstel}
+
+
+\usepackage{lipsum}
+
+%------------------------------------------------------------------------------
+% Metadata over het voorstel
+%------------------------------------------------------------------------------
+
+%---------- Titel & auteur ----------------------------------------------------
+
+% TODO: geef werktitel van je eigen voorstel op
+\PaperTitle{Automatische transformatie van ingescande medicatieschema's naar gestructureerde digitale data: een proof-of-concept}
+\PaperType{Onderzoeksvoorstel Bachelorproef 2019-2020} % Type document
+
+% TODO: vul je eigen naam in als auteur, geef ook je emailadres mee!
+\Authors{Milad Nazari\textsuperscript{1}} % Authors
+\CoPromotor{Bram Vandewalle\textsuperscript{2} (Into Care by Pridiktiv NV)}
+\affiliation{\textbf{Contact:}
+  \textsuperscript{1} \href{mailto:contact@miladnazari.be}{contact@miladnazari.be};
+  \textsuperscript{2} \href{mailto:bram.vandewalle@into.care}{bram.vandewalle@into.care.be};
+}
+
+%---------- Abstract ----------------------------------------------------------
+
+\Abstract{Het manueel aanmaken, ingeven en persisteren van digitale medicatiedata op basis van papieren medicatieschema's met uiteenlopend lay-outs is een tijdrovend en kostelijk proces, zeker wanneer het aantal te transformeren documenten groot is. In deze bachelorproef wordt er onderzocht naar een nauwkeurig digitalisatiesysteem die ingescande medicatieschema's automatisch transformeert naar gestructureerde data voor medicatielogistiek; eveneens wordt een proof-of-concept geïmplementeerd. Er wordt verwacht dat de documenten succesvol getransformeerd zullen worden, mits het implementeren van correctie- en optimalisatiealgoritmen om respectievelijk de nauwkeurigheid en performantie van het systeem te verbeteren, wat essentieel is voor IT-bedrijven.
+}
+
+%---------- Onderzoeksdomein en sleutelwoorden --------------------------------
+% TODO: Sleutelwoorden:
+%
+% Het eerste sleutelwoord beschrijft het onderzoeksdomein. Je kan kiezen uit
+% deze lijst:
+%
+% - Mobiele applicatieontwikkeling
+% - Webapplicatieontwikkeling
+% - Applicatieontwikkeling (andere)
+% - Systeembeheer
+% - Netwerkbeheer
+% - Mainframe
+% - E-business
+% - Databanken en big data
+% - Machineleertechnieken en kunstmatige intelligentie
+% - Andere (specifieer)
+%
+% De andere sleutelwoorden zijn vrij te kiezen
+
+\Keywords{Documentanalyse en -herkenning (DAR).
+ Medicatieschema --- Machineleertechnieken --- OCR} % Keywords
+\newcommand{\keywordname}{Sleutelwoorden} % Defines the keywords heading name
+
+%---------- Titel, inhoud -----------------------------------------------------
+
+\begin{document}
+
+\flushbottom % Makes all text pages the same height
+\maketitle % Print the title and abstract box
+\tableofcontents % Print the contents section
+\thispagestyle{empty} % Removes page numbering from the first page
+
+%------------------------------------------------------------------------------
+% Hoofdtekst
+%------------------------------------------------------------------------------
+
+% De hoofdtekst van het voorstel zit in een apart bestand, zodat het makkelijk
+% kan opgenomen worden in de bijlagen van de bachelorproef zelf.
+\input{voorstel-inhoud}
+
+%------------------------------------------------------------------------------
+% Referentielijst
+%------------------------------------------------------------------------------
+% TODO: de gerefereerde werken moeten in BibTeX-bestand ``voorstel.bib''
+% voorkomen. Gebruik JabRef om je bibliografie bij te houden en vergeet niet
+% om compatibiliteit met Biber/BibLaTeX aan te zetten (File > Switch to
+% BibLaTeX mode)
+
+\phantomsection
+\printbibliography[heading=bibintoc]
+
+\end{document}

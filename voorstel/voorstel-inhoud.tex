@@ -1,0 +1,71 @@
+%---------- Inleiding ---------------------------------------------------------
+
+\section{Introductie} % The \section*{} command stops section numbering
+\label{sec:introductie}
+
+Het medicatieschema is een geheel van gestandaardiseerde informatie over de actieve medicatie van een patiënt, met inbegrip van de identiteit van de geneesmiddelen, hun dosering, indicatie, relevante gebruiksaanwijzingen en bijkomende informatie waar nodig. Het omvat zowel voorgeschreven als niet-voorgeschreven geneesmiddelen en voedingssupplementen.\\ 
+
+\noindent Deze oplijsting van de actieve medicatie van de patiënt is niet enkel een essentieel hulpmiddel voor de patiënt bij de correct inname van medicatie maar ook voor medische professionelen om bv. over- of onderdosering, dubbelmedicatie, en andere geneesmiddelgebonden problemen te voorkomen. Ook wordt het gebruikt bij de communicatie tussen zorgverstrekkers. Het medicatieschema wordt eveneens door verpleegsters geraadpleegd voor het klaarzetten van de medicatie.\\
+
+\noindent Dit schema wordt grafisch steeds in tabulaire vorm gepresenteerd. Echter is de lay-out hiervan niet gestandaardiseerd; afhankelijk van de apotheker of andere zorgverstrekker worden andere kolomnamen, kolomverdeling, rand- en verdelingstijl, celgrootte en andere tabelelementen aangewend. Dit bemoeilijkt ernstig het ontwikkelen van een transformatiesysteem die ingescande medicatieschema's omzet in instanties van een uniform digitale datastructuur in bv. XML- of JSON-formaat voor digitale verwerking van de medicatiedata in gezondheidszorgplatformen.\\
+
+\noindent Hierdoor is er een nood aan een digitalisatiesysteem die medicatieschema's van verschillende vormen en met verschillende lay-outs nauwkeurig omzet in corresponderende instanties van een uniforme datastructuurschema. De doelstelling van dit onderzoek is het bestuderen van de mogelijkheden om een dergelijk systeem tot stand te brengen en het implementeren van een proof-of-concept van een optimale oplossing. De volgende onderzoeksvragen kunnen gesteld worden bij dit onderzoek:\\ 
+
+\noindent \begin{itemize}
+  \item Wat zijn de structuren en de relaties tussen de entiteiten in tabulaire data?
+  \item Wat zijn de uitdagingen en complicaties bij tabelherkenning en -analyse? Kan er meer complexiteit ondervonden worden bij medicatieschematabellen?
+  \item Hoe kan de correctheid en nauwkeurigheid van de transformatie van een tabel geëvalueerd worden?
+  \item Welke oplossingen bestaan er reeds voor tabelherkenning en/of tabelanalyse?
+  \item Wat is de optimale oplossing voor medicatieschema's? Hoe kan deze bepaald worden?
+  \item Hoe kan domeinkennis gebruikt worden om de oplossing te optimaliseren?
+\end{itemize}
+
+%---------- Stand van zaken ---------------------------------------------------
+
+\section{State-of-the-art}
+\label{sec:state-of-the-art}
+
+Verschillende oplossingen voor tabeldetectie zijn reeds beschikbaar:
+
+\begin{itemize}
+    \item Vervormbare convolutionele neurale netwerken \autocite{Siddiqui2018}
+    \item Verticale en horizontale lijnendetectie \autocite{Gatos2005}
+    \item Naïve Bayes en documentstructuur \autocite{Li2006}
+\end{itemize}
+\hfill \break
+\noindent Ook voor tabelanalyse zijn enkele oplossingen voorgesteld: 
+
+\begin{itemize}
+    \item Cellsegmentatie \autocite{Nazemi2016}
+    \item Fast CNN \autocite{Oliveira2017}
+    \item Faster R-CNN \autocite{Schreiber2017}
+    \item Graafgebaseerde neurale netwerken (GNN's) \autocite{Qasim2019}
+\end{itemize}
+
+% Voor literatuurverwijzingen zijn er twee belangrijke commando's:
+% \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
+%   geen onderdeel is van de zin.
+% \textcite{KEY} => Auteur (jaartal)  Gebruik dit als de auteursnaam wel een
+%   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
+%   ...'')
+
+\section{Methodologie}
+\label{sec:methodologie}
+
+Het uitvoeren van het onderzoek zal beginnen met het ontwerpen van een scoresysteem, ook wel een benchmarksysteem genoemd, waarbij de nauwkeurigheid, precisie, performantie en andere factoren van de tabelherkenningsoplossingen in rekening gebracht zullen worden. Hiervoor zullen reeds bestaande geannoteerde, geanonimiseerde medicatieschemadatasets gebruikt worden. \\
+
+\noindent Hierna zullen de verschillende oplossingen geïmplementeerd en tevens geëvalueerd worden a.d.h.v. de benchmarksysteem. De optimale oplossing zal op deze manier bepaald worden.\\
+
+\noindent Verder zullen potentiële optimalisatieopportuniteiten bestudeerd worden, deze zullen al dan niet domeinkennisgebonden zijn.
+
+\section{Verwachte resultaten}
+\label{sec:verwachte_resultaten}
+
+Enerzijds bestaan er in tabellen relaties tussen kolommen en cellen, en relaties tussen cellen onderling die voorgesteld kunnen worden door grafen en anderzijds vertonen de verschillende lay-outs van tabellen een patroon die door het menselijke brein maar dus ook door diepe neurale netwerken zeer snel herkend kan worden. Er wordt daarom verwacht dat een graafgebaseerde Deep Learning-oplossing de best resultaten zal opleveren.
+
+%---------- Verwachte conclusies ----------------------------------------------
+\section{Verwachte conclusies}
+\label{sec:verwachte_conclusies}
+
+Aangezien zowel nieuwe state-of-the-art algoritmen als reeds bestaande softwareimplementatieoplossingen beschikbaar, wordt er verwacht dat een performante proof-of-concept van een digitalisatiesysteem voor medicatiesystemen successvol gecreëerd zal worden. Eveneens wordt er verwacht dat domeinkennis de nauwkeurigheid van het systeem zal verhogen. 
+
