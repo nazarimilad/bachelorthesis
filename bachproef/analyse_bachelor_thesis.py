@@ -21,9 +21,9 @@ def main():
     if len(sys.argv) > 1 and sys.argv[1] == "y":
         save_text(text, 'saved_text.txt')
     analysis_result['word_count'] = get_word_count(text)
-    print(json.dumps(analysis_result))
     data = sorted([(k, v) for k, v in analysis_result.items()])
-    print(tabulate.tabulate(data, tablefmt="github"))
+    to_print = "### Statistics\n" + repr(tabulate.tabulate(data, tablefmt="github"))
+    print(repr(to_print))
 
 def extract_text(document_tree):
     remove_unnecessary_nodes(document_tree)
