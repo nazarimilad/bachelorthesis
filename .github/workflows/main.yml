@@ -22,6 +22,7 @@ jobs:
     - name: analyse bachelor thesis
       id: analysis
       run: |
+        sudo apt-get install python3-setuptools
         pip3 install -r requirements.txt
         echo "::set-output name=analysis_result::$(python3 analyse_bachelor_thesis.py)"
       working-directory: ./bachproef
