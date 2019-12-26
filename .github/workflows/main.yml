@@ -28,14 +28,14 @@ jobs:
       working-directory: ./bachproef
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%d-%m-%Y_%H:%M')"
+      run: echo "::set-output name=date::$(date +'%H-%M_%d-%m-%Y')"
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1.0.0
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          tag_name: v1.15
+          tag_name: ${{steps.date.outputs.date}}
           release_name: Release
           draft: false
           prerelease: false
