@@ -22,7 +22,7 @@ def main():
         save_text(text, 'saved_text.txt')
     analysis_result['word_count'] = get_word_count(text)
     data = sorted([(k, v) for k, v in analysis_result.items()])
-    to_print = "### Statistics\n" + repr(tabulate.tabulate(data, tablefmt="github"))
+    to_print = "### Statistics\n" + tabulate.tabulate(data, tablefmt="github")
     print(repr(to_print))
 
 def extract_text(document_tree):
