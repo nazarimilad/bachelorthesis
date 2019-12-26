@@ -23,7 +23,8 @@ def main():
     analysis_result['word_count'] = get_word_count(text)
     data = sorted([(k, v) for k, v in analysis_result.items()])
     to_print = "### Statistics\n" + tabulate.tabulate(data, tablefmt="github")
-    print(repr(to_print))
+    to_print = to_print.replace('\n', '%0A')
+    print(to_print)
 
 def extract_text(document_tree):
     remove_unnecessary_nodes(document_tree)

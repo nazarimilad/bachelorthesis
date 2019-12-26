@@ -37,7 +37,7 @@ jobs:
       with:
           tag_name: ${{steps.date.outputs.date}}
           release_name: Release
-          body: "### Statistics"
+          body: "${{steps.analysis.outputs.analysis_result}}"
           draft: false
           prerelease: false
     - name: Upload bachelor thesis proposition
