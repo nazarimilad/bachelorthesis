@@ -61,5 +61,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./bachproef/bachproef-tin.pdf
-        asset_name: join(['Nazari_Milad_', ${{steps.date.outputs.date_year}}], '_bachelorproef.pdf')
+        asset_name: ${{ join(['Nazari_Milad_', ${{steps.date.outputs.date_year}}], '_bachelorproef.pdf') }}
         asset_content_type: application/pdf
