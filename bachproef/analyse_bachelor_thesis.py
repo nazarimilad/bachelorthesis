@@ -25,7 +25,8 @@ def analyse(*analyser_functions) -> Dict[str, Any]:
 def print_result(analysis_result: Dict[str, Any]) -> None:
     data = sorted([(k, v) for k, v in analysis_result.items()])
     to_print = "### Statistics\n" + tabulate.tabulate(data, tablefmt="github")
-    print(to_print)
+    # to_print = to_print.replace('\n', '%0A')
+    print(repr(to_print))
 
 def analyse_pdf(file_name: str) -> Dict[str, Any]:
     analysis_result = dict()
