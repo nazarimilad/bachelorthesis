@@ -22,6 +22,11 @@ def analyse(*analyser_functions) -> Dict[str, Any]:
         analysis_result.update(analyser[0](analyser[1]))
     return analysis_result
 
+def print_result(analysis_result: Dict[str, Any]) -> None:
+    data = sorted([(k, v) for k, v in analysis_result.items()])
+    to_print = "### Statistics\n" + tabulate.tabulate(data, tablefmt="github")
+    print(to_print)
+
 def analyse_pdf(file_name: str) -> Dict[str, Any]:
     analysis_result = dict()
     try: 
@@ -45,12 +50,6 @@ def analyse_tex(file_name: str) -> Dict[str, Any]:
         return analysis_result
     except FileNotFoundError:
         return dict()
-
-def print_result(analysis_result: Dict[str, Any]) -> None:
-    data = sorted([(k, v) for k, v in analysis_result.items()])
-    to_print = "### Statistics\n" + tabulate.tabulate(data, tablefmt="github")
-    to_print = to_print.replace('\n', '%0A')
-    print(to_print)
 
 def extract_text(document_tree: Any) -> str:
     remove_unnecessary_nodes(document_tree)
