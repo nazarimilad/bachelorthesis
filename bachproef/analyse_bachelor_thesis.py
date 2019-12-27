@@ -24,8 +24,10 @@ def analyse(*analyser_functions) -> Dict[str, Any]:
 
 def print_result(analysis_result: Dict[str, Any]) -> None:
     data = sorted([(k, v) for k, v in analysis_result.items()])
-    to_print = "### Statistics\n" + tabulate.tabulate(data, tablefmt="github")
-    # to_print = to_print.replace('\n', '%0A')
+    to_print = "### Metrics\n" + tabulate.tabulate(data, tablefmt="github")
+    # use newline char for url encoding instead of standard one
+    # to get multiline output shown in release body
+    to_print = to_print.replace('\n', '%0A')
     print(repr(to_print))
 
 def analyse_pdf(file_name: str) -> Dict[str, Any]:
