@@ -5,43 +5,69 @@ import string
 import json
 import os
 import sys
+from typing import Dict, Tuple, List, Any, Callable
 import PyPDF2
 import TexSoup
 import tabulate
 
-def main():
+def main() -> None:
+    analysis_result = analyse([analyse_pdf, "bachproef-tin.pdf"],
+                              [analyse_tex, "bachproef-tin.tex"]
+                            )
+    print_result(analysis_result)
+
+def analyse(*analyser_functions) -> Dict[str, Any]:
+    analysis_result: Dict[str, Any] = dict()
+    for analyser in analyser_functions:
+        analysis_result.update(analyser[0](analyser[1]))
+    return analysis_result
+
+def analyse_pdf(file_name: str) -> Dict[str, Any]:
     analysis_result = dict()
-    inputPdf = PyPDF2.PdfFileReader(open("bachproef-tin.pdf", "rb"))
-    analysis_result['pages'] = inputPdf.getNumPages()
-    document_tree = get_document_tree('bachproef-tin.tex')
-    analysis_result['tables'] = get_occurence_amounts('table', document_tree)
-    analysis_result['figures'] = get_occurence_amounts('figure', document_tree)
-    analysis_result['citations'] = get_occurence_amounts('citation', document_tree)
-    text = extract_text(document_tree)
-    if len(sys.argv) > 1 and sys.argv[1] == "y":
-        save_text(text, 'saved_text.txt')
-    analysis_result['word_count'] = get_word_count(text)
+    try: 
+        inputPdf = PyPDF2.PdfFileReader(open(file_name, "rb"))
+        analysis_result['pages'] = inputPdf.getNumPages()
+        return analysis_result
+    except FileNotFoundError:
+        return dict()
+
+def analyse_tex(file_name: str) -> Dict[str, Any]:
+    analysis_result: Dict[str, Any] = dict()
+    try:
+        document_tree = get_document_tree(file_name)
+        analysis_result['tables'] = get_occurence_amounts('table', document_tree)
+        analysis_result['figures'] = get_occurence_amounts('figure', document_tree)
+        analysis_result['citations'] = get_occurence_amounts('citation', document_tree)
+        text = extract_text(document_tree)
+        if len(sys.argv) > 1 and sys.argv[1] == "y":
+            save_text(text, 'saved_text.txt')
+        analysis_result['word_count'] = get_word_count(text)
+        return analysis_result
+    except FileNotFoundError:
+        return dict()
+
+def print_result(analysis_result: Dict[str, Any]) -> None:
     data = sorted([(k, v) for k, v in analysis_result.items()])
     to_print = "### Statistics\n" + tabulate.tabulate(data, tablefmt="github")
     to_print = to_print.replace('\n', '%0A')
     print(to_print)
 
-def extract_text(document_tree):
+def extract_text(document_tree: Any) -> str:
     remove_unnecessary_nodes(document_tree)
     text_elements = list(document_tree.text)
     text_elements = remove_unnecessary_text(text_elements)
     return " ".join(text_elements)
 
-def save_text(text, file_name):
+def save_text(text: str, file_name: str) -> None:
     with open(file_name, "w") as text_file:
         print(text, file=text_file)
         
-def get_occurence_amounts(node, document_tree):
+def get_occurence_amounts(node: Any, document_tree: Any) -> int:
     if node == 'citation':
         return len(get_citations())
     return len(list(document_tree.find_all(node)))
     
-def get_document_tree(file_name):
+def get_document_tree(file_name: str) -> Any:
     # merge all tex's into one
     os.system("chmod +x recursivelyMergeTex.awk")
     os.system(f"./recursivelyMergeTex.awk < {file_name} > combined_temp.tex")
@@ -53,9 +79,9 @@ def get_document_tree(file_name):
     
     return tree
 
-def remove_unnecessary_nodes(document_tree):
+def remove_unnecessary_nodes(document_tree: Any) -> None:
     nodes_to_remove = [
-        # 'autocite',
+        'autocite',
         'documentclass',
         'usepackage',
         'title',
@@ -80,22 +106,26 @@ def remove_unnecessary_nodes(document_tree):
     ]
     for node in nodes_to_remove:
         for found_instance in document_tree.find_all(node):
-            found_instance.delete()
+            try:
+                found_instance.delete()
+            except ValueError:
+                # print("unnecessary node instance could not be removed")
+                pass
 
-def remove_unnecessary_text(text_elements):
+def remove_unnecessary_text(text_elements: List[str]) -> List[str]:
     text_elements = filter_appendix_and_rest(text_elements)
     text_elements = remove_comments(text_elements)
     text_elements = remove_unnecessary_words(text_elements)
     text_elements = trim_and_clean_up(text_elements)
     return text_elements
     
-def filter_appendix_and_rest(text_elements):
+def filter_appendix_and_rest(text_elements: List[str]) -> List[str]:
     return text_elements[: text_elements.index('Appendix')]
 
-def remove_comments(text_elements):
+def remove_comments(text_elements: List[str]) -> List[str]:
     return list(map(lambda text: '' if len(text) > 0 and len(re.findall(r'^%', text)) > 0 else text, text_elements))
 
-def remove_unnecessary_words(text_elements):
+def remove_unnecessary_words(text_elements: List[str]) -> List[str]:
     string_to_remove = [
         '\n', 
         '\t',
@@ -118,15 +148,15 @@ def remove_unnecessary_words(text_elements):
         temp_result = list(map(lambda text: text.replace(string, '') if len(text) > 0 else text, temp_result))
     return temp_result
 
-def get_citations():
+def get_citations() -> List[str]:
     with open('bachproef-tin.bib') as f: bib = f.read()
     return re.findall(r'\n@.*{(.*?),', bib)
 
-def trim_and_clean_up(text_elements):
+def trim_and_clean_up(text_elements: List[str]) -> List[str]:
     temp_result = list(map(lambda text: text.strip(), text_elements))
     return list(filter(lambda text: len(text) > 0, temp_result))
 
-def get_word_count(text):
+def get_word_count(text: str) -> int:
     return sum(word.strip(string.punctuation).isalnum() for word in text.split())
 
 
