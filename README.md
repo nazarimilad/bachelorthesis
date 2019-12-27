@@ -32,7 +32,7 @@ Wil je dit ook gebruiken? Volg dan de volgende stappen:
 
 3. Vervang de CI/CD `.yaml`-bestand met [de mijne](.github/workflows/main.yml)
 
-4. Voeg de [awk script](bachproef/recursivelyMergeTex.awk] en de [python script](bachproef/analyse_bachelor_thesis.py) in de `bachproef` folder. 
+4. Voeg de [awk script](bachproef/recursivelyMergeTex.awk) en de [python script](bachproef/analyse_bachelor_thesis.py) in de `bachproef/` folder. 
 
 5. `git push`
 
