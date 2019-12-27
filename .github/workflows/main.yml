@@ -63,5 +63,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./bachproef/bachproef-tin.pdf
-        asset_name: $LAST_NAME_$FIRST_NAME_${{steps.date.outputs.date_year}}_bachelorproef.pdf
+        asset_name: format('{0}_{1}_${{steps.date.outputs.date_year}}_bachelorproef.pdf', $LAST_NAME, $FIRST_NAME)
         asset_content_type: application/pdf
