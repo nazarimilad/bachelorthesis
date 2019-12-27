@@ -6,13 +6,15 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env:
+        FIRST_NAME: Milad
+        LAST_NAME: Nazari
     steps:
     - uses: actions/checkout@v1
     - name: Compile bachelor thesis proposition
       uses: xu-cheng/latex-action@1.2.1
       with:
-          root_file: nazari_milad_voorstel.tex
+          root_file: voorstel.tex
           working_directory: ./voorstel
     - name: Compile bachelor thesis
       uses: xu-cheng/latex-action@1.2.1
@@ -50,8 +52,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./voorstel/nazari_milad_voorstel.pdf
-        asset_name: Nazari_Milad_${{steps.date.outputs.date_year}}_bachelorproef_voorstel.pdf 
+        asset_path: ./voorstel/voorstel.pdf
+        asset_name: ${{LAST_NAME}}_${{FIRST_NAME}}_${{steps.date.outputs.date_year}}_bachelorproef_voorstel.pdf 
         asset_content_type: application/pdf
     - name: Upload bachelor thesis
       id: upload-release-bachelor-thesis
@@ -61,5 +63,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./bachproef/bachproef-tin.pdf
-        asset_name: Nazari_Milad_${{steps.date.outputs.date_year}}_bachelorproef.pdf
+        asset_name: ${{LAST_NAME}}_${{FIRST_NAME}}_${{steps.date.outputs.date_year}}_bachelorproef.pdf
         asset_content_type: application/pdf
