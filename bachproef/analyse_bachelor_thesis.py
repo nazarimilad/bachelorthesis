@@ -28,7 +28,7 @@ def print_result(analysis_result: Dict[str, Any]) -> None:
     # use newline char for url encoding instead of standard one
     # to get multiline output shown in release body
     to_print = to_print.replace('\n', '%0A')
-    print(repr(to_print))
+    print(to_print)
 
 def analyse_pdf(file_name: str) -> Dict[str, Any]:
     analysis_result = dict()
