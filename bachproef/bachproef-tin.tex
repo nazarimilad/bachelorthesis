@@ -6,49 +6,51 @@
 \documentclass{bachproef-tin}
 
 \usepackage{hogent-thesis-titlepage} % Titelpagina conform aan HOGENT huisstijl
+\usepackage[acronym]{glossaries}
 
 %%---------- Documenteigenschappen ---------------------------------------------
-% TODO: Vul dit aan met je eigen info:
 
 % De titel van het rapport/bachelorproef
-\title{Titel}
+\title{Automatische transformatie van ingescande tabellen naar gestructureerde digitale data}
 
 % Je eigen naam
-\author{Steven Stevens}
+\author{Milad Nazari}
 
 % De naam van je promotor (lector van de opleiding)
-\promotor{Jan Janssens}
+\promotor{Martijn Saelens}
 
 % De naam van je co-promotor. Als je promotor ook je opdrachtgever is en je
 % dus ook inhoudelijk begeleidt (en enkel dan!), mag je dit leeg laten.
-\copromotor{Piet Pieters}
+\copromotor{Bram Vandewalle}
 
 % Indien je bachelorproef in opdracht van/in samenwerking met een bedrijf of
 % externe organisatie geschreven is, geef je hier de naam. Zoniet laat je dit
 % zoals het is.
-\instelling{---}
+\instelling{Into Care by Predictive NV}
 
 % Academiejaar
-\academiejaar{2018-2019}
+\academiejaar{2019-2020}
 
 % Examenperiode
 %  - 1e semester = 1e examenperiode => 1
 %  - 2e semester = 2e examenperiode => 2
 %  - tweede zit  = 3e examenperiode => 3
-\examenperiode{2}
+\examenperiode{3}
+
+\makenoidxglossaries
+
+\newacronym{ccn}{CCN}{Convolutional Neural Network}
+\newglossaryentry{tabel}
+{
+    name=tabel,
+    description={Een hierarchische structuur gebruikt om data visueel eenvoudig weer te geven}
+}
 
 %===============================================================================
 % Inhoud document
 %===============================================================================
 
 \begin{document}
-
-%---------- Taalselectie -------------------------------------------------------
-% Als je je bachelorproef in het Engels schrijft, haal dan onderstaande regel
-% uit commentaar. Let op: de tekst op de voorkaft blijft in het Nederlands, en
-% dat is ook de bedoeling!
-
-%\selectlanguage{english}
 
 %---------- Titelblad ----------------------------------------------------------
 \inserttitlepage
@@ -76,10 +78,7 @@
 
 \listoffigures
 \listoftables
-
-% Als je een lijst van afkortingen of termen wil toevoegen, dan hoort die
-% hier thuis. Gebruik bijvoorbeeld de ``glossaries'' package.
-% https://www.overleaf.com/learn/latex/Glossaries
+\printnoidxglossaries
 
 %---------- Kern ---------------------------------------------------------------
 
@@ -92,15 +91,11 @@
 \input{inleiding}
 \input{standvanzaken}
 \input{methodologie}
-
-% Voeg hier je eigen hoofdstukken toe die de ``corpus'' van je bachelorproef
-% vormen. De structuur en titels hangen af van je eigen onderzoek. Je kan bv.
-% elke fase in je onderzoek in een apart hoofdstuk bespreken.
-
-%\input{...}
-%\input{...}
-%...
-
+\input{systeemvereisten}
+\input{selectieAlgoritmen}
+\input{ocr}
+\input{optimalisaties}
+\input{architectuurPoc}
 \input{conclusie}
 
 %%=============================================================================
@@ -116,6 +111,7 @@
 
 Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat vooraf werd beoordeeld door de promotor. Dat voorstel is opgenomen in deze bijlage.
 
+\Gls{ccn}'s worden veelal gebruikt voor visuele machine learning
 % Verwijzing naar het bestand met de inhoud van het onderzoeksvoorstel
 \input{../voorstel/voorstel-inhoud}
 
