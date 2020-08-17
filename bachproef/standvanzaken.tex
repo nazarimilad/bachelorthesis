@@ -40,7 +40,7 @@ Hoewel beide tabellen identiek zijn wat informatieinhoud betreft, kan duidelijk 
 
 \raggedbottom
 
-Volgens \textcite{Wang1996} is een tabel, door \textit{stub scheiding} en \textit{boxhead scheiding}, verdeeld in vier hoofdregio's die in onderstaande figuur \ref{fig:tabel_anatomie} merkbaar zijn. De regio linksbeneden die de rijhoofdingen bevat en de regio rechtsboven die de kolomhoofdingen bevat, worden respectievelijk de \textit{stub} en de \textit{boxhead} genoemd. De regio linksboven, die de categorieën in de \textit{stub} inhouden is gekend als de \textit{stub head} en de \textit{body} tenslotte, is de regio rechts van de \textit{sub} en onder de \textit{boxhead} die de tabeldata-elementen bevat. De snijpunt van een rij en een kolom wordt een \textit{cel} genoemd; en een rechthoekig verzameling van \textit{cellen} is gekend als een \textit{block}.
+Volgens \textcite{Wang1996} is een tabel, door \textit{stub scheiding} en \textit{boxhead scheiding}, verdeeld in vier hoofdregio's die in onderstaande figuur \ref{fig:tabel_anatomie} merkbaar zijn. De regio linksbeneden die de rijhoofdingen bevat en de regio rechtsboven die de kolomhoofdingen bevat, worden respectievelijk de \textit{stub} en de \textit{boxhead} genoemd. De regio linksboven, die de categorieën in de \textit{stub} inhouden is gekend als de \textit{stub head} en de \textit{body}, tenslotte, is de regio rechts van de \textit{sub} en onder de \textit{boxhead} die de tabeldata-elementen bevat. De snijpunt van een rij en een kolom wordt een \textit{cel} genoemd; en een rechthoekig verzameling van \textit{cellen} is gekend als een \textit{blok}.
 
 \begin{figure}[H]
     \centering
@@ -68,7 +68,7 @@ Voor de voorstelling van tabellen op het internet, m.a.w. op internetbrowsers, w
 \section{Tabeltransformatie}
 \label{sec:tabel-transformatie}
 
-Verschillende technieken om tabeltransformatie werden reeds ontwikkeld. Echter blijft een algemeen toepasbare oplossing een moeilijk uitdaging, en dit voor diverse redenen.
+Verschillende technieken voor tabeltransformatie werden reeds ontwikkeld. Echter blijft een algemeen toepasbare oplossing een moeilijk uitdaging, en dit voor diverse redenen.
 
 \begin{itemize}
     \item Tabellen bezitten uiteenlopende layouts en designs, zonder enige standaardisatie
@@ -86,11 +86,11 @@ Met tabeldetectie worden eerst regio's in een bepaalde document geïdentificeerd
 \subsection{Tabeldetectie}
 \label{subsec:tabel-detectie}
 
-Tabeldetectietechnieken kan men, kijkend naar de stand van zaken, opdelen in twee klassen: klassieke, op regelgebaseerde algoritmen enerzijds en de recentere, opkomende algoritmen die gebruik maken van machinaal leertechnieken.
+Tabeldetectietechnieken kan men, kijkend naar de stand van zaken, opdelen in twee klassen: klassieke, op regelgebaseerde algoritmen enerzijds en de recentere, datagedreven algoritmen die gebruik maken van machinaal leertechnieken.
 
 \subsubsection{Regelgebaseerde technieken}
 
-\textcite{Watanabe1991} waren de auteurs van één van de vroegste werken om tabellen te identificeren. De basis voor de tabelidentificatie hier is de identificatie van individuele blokken, ingesloten door horizontale en verticale lijnsegmenten. Eerst worden lijnsegmenten gedetecteerd en hiermee wordt vervolgens de positie van hoekpunten, gevormd door deze lijne, bepaald. Hierna wordt a.d.h.v. de positie van deze hoekpunten individuele blokken geïdentificeerd. De relatie tussen de verschillende blokken wordt uiteindelijk in globale en individuele boomstructuren gebruikt om te beslissen of het over een tabel gaat of niet.
+\textcite{Watanabe1991} waren de auteurs van één van de vroegste werken om tabellen te identificeren. De basis voor de tabelidentificatie hier is de identificatie van individuele blokken, ingesloten door horizontale en verticale lijnsegmenten. Eerst worden lijnsegmenten gedetecteerd en hiermee wordt vervolgens de positie van hoekpunten, gevormd door deze lijnen, bepaald. Hierna wordt a.d.h.v. de positie van deze hoekpunten individuele blokken geïdentificeerd. De relatie tussen de verschillende blokken wordt uiteindelijk in globale en individuele boomstructuren gebruikt om te beslissen of het over een tabel gaat of niet.
 
 Het jaar daarop stelden \textcite{Laurentini1992} een methode voor waarbij tekstregio's op een bottom-up manier gedetecteerd worden. De gedetecteerde karakters worden samengebracht tot woorden en deze woorden worden op hun beurt aan elkaar samengevoegd tot tekstblokken. Ook worden de scheidingslijnen gedeteceerd. Voor elke tekstblok wordt diens positie vergeleken met de scheidingslijnen, om te bepalen of het tot een bepaalde tabel behoort.
 
@@ -116,7 +116,7 @@ Een \Gls{SVM}-classificatiesysteem, steunend op enkele manueel geselecteerde dim
 
 In hetzelfde jaar presenteerden \textcite{Tran2015} een methode die zich baseert op de ruimtelijke ordening van uitgehaalde tekstblokken en op \Gls{ROI}'s. In tegenstelling tot verschillende andere traditionele algoritmen, is hun voorstel direct bruikbaar op afbeeldingen van gescande documenten.
 
-Eén van de eerste pogingen om deep learning toe te passen, werd gerealiseerd door \textcite{Hao2016}. Kandidaattabellen worden geselecteerd op basis van scheidingslijnfeatures. Hierna worden deze Kandidaattabellen verwerkt door een \Gls{CNN}. Uiteindelijk vindt de klassificatie ``tabel`` of ``geen tabel`` plaats.
+Eén van de eerste pogingen om deep learning toe te passen, werd gerealiseerd door \textcite{Hao2016}. Kandidaattabellen worden geselecteerd op basis van scheidingslijnfeatures. Hierna worden deze kandidaattabellen verwerkt door een \Gls{CNN}. Uiteindelijk vindt de klassificatie ``tabel`` of ``geen tabel`` plaats.
 
 \textcite{Rashid2017} gebruikten een bottom-up algoritme waarbij voor elk woord een feature-vector werd aangemaakt. Elke feature-vector bevat features zoals de dimensies van het woord, de afstand tot de andere woorden in de nabijheid, de hoeveelheid witruimte, etc. Deze feature-vectors werden uiteindelijk gebruikt om een AutoMLP-klassificatiessysteem te trainen.
 
@@ -131,7 +131,7 @@ Faster R-CNN is een poopulaire modelkeuze geworden door de hoge nauwkeurigheid d
 
 Om de structuur van een tabel te kunnen analyseren, gebruikten \textcite{Nazemi2016} celsegmentatie. De horizontale en verticale scheidingslijnen van de tabel worden geïdentificeerd, en op basis van deze lijnen en hun kruisingen worden de tabelcellen gevormd. Voor tabellen zonder scheidingslijnen worden rijen gevormd door tekstblokken die dezelfde Y-waarde bezitten, en kolommen worden gevormd door tekstblokken waartussen weinig witruimte zit, m.a.w. door tekstblokken die relatief dicht bij elkaar staan.
 
-\textcite{Qasim2019} meenden dat \Gls{CNN}, die normaliter een populaire keuze is, niet de ideale neurale netwerk architectuur is voor structuuranalyse van tabellen, op een datagedreven manier. Ze stellen een architectuur voor die gebaseerd die is op \Gls{GNN}'s. Hoewel een tabelafbeelding verwerkt kan worden door een \Gls{CNN}, kan een tabel zelf beter verwerkt worden door een \Gls{GNN} aangezien de cellen van de tabel en de relatie tussen cellen eenvoudig gepresenteerd en gemodelleerd kunnen worden door een graaf. Een \Gls{CNN} wordt gebruikt voor visuele feature extractie, gevolgd door drie \Gls{GNN}'s: één om te bepalen of twee tekstblokken tot dezelfde cel behoren, een tweede om na te gaan of twee tekstblokken deel uitmaken van dezelfde rij en tenslotte een derde \Gls{GNN} om te bepalen of twee tekstblokken tot dezelfde kolom behoren.
+\textcite{Qasim2019} meenden dat \Gls{CNN}, die normaliter een populaire keuze is, niet de ideale neurale netwerk architectuur is voor structuuranalyse van tabellen, op een datagedreven manier. Ze stelden een architectuur voor die gebaseerd die is op \Gls{GNN}'s. Hoewel een tabelafbeelding verwerkt kan worden door een \Gls{CNN}, kan een tabel zelf beter verwerkt worden door een \Gls{GNN} aangezien de cellen van de tabel en de relatie tussen cellen eenvoudig gepresenteerd en gemodelleerd kunnen worden door een graaf. Een \Gls{CNN} wordt gebruikt voor visuele feature extractie, gevolgd door drie \Gls{GNN}'s: één om te bepalen of twee tekstblokken tot dezelfde cel behoren, een tweede om na te gaan of twee tekstblokken deel uitmaken van dezelfde rij en tenslotte een derde \Gls{GNN} om te bepalen of twee tekstblokken tot dezelfde kolom behoren.
 
 \subsection{End-to-end-systemen}
 \label{subssec:end-to-end-systemen}
