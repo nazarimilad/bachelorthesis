@@ -11,23 +11,47 @@
 %% mogelijke manier toegepast hebt om een antwoord te vinden op de
 %% onderzoeksvraag.
 
+In dit hoofdstuk worden eerst het doel en de systeemvereisten van de proof-of-concept besproken. Vervolgens wordt de selectie van technologieën voor de proof-of-concept behandeld, inclusief de keuze van de tabelstransformatie-algoritme(n). Uiteindelijk wordt de evaluatiessyteem verduidelijkt die gebruikt wordt om de performantie van de proof-of-concept te beoordelen.
+
 \section{Systeemvereisten}
 \label{sec:systeemvereisten}
 
 \subsection{Goals}
 
+Om een proof-of-concept succesvol te kunnen realiseren, moeten de volgende einddoelen hiervoor bereikt worden:
+
+\begin{itemize}
+    \item Een end-to-end-systeem dient gecreëerd te worden. Dit betekent dat de proof-of-concept niet enkel een tabeldetectiecomponent moet bevatten, maar eveneens een tabelstructuuranalysecomponent, een GUI en andere nodige elementen om de tabeltransformatie zoveel mogelijk te automatiseren.\\
+
+    \item De software moet modulair geïmplementeerd worden. Code geschreven voor tabeldetectie, bijvoorbeeld, mag niet afhankelijk zijn van code geschreven voor tabelstructuuranalyse en vice versa. Dit maakt het mogelijk om later één deel van de tabeltransformatiesoftware te verbeteren of opnieuw te herschrijven, zonder hierdoor een impact te hebben op de rest van de software.\\
+
+    \item Enkel open source software en libraries, zonder commercële restricties, mogen gebruikt worden.\\
+
+    \item De proof-of-concept moet kunnen functioneren op verschillende eenvoudige tabellayouts. D.w.z. dat de tabeltransformatie niet mag afhangen van de fysieke dimensies van de tabel zelf of van de cellen. Noch mag het afhankelijk zijn van het aantal rijen of kolommen. Verder moet de software contextonafhankelijk zijn; een voedingswaardetabel bijvoorbeeld moet even nauwkeurig getransformeerd kunnen worden als een medicatieschema.
+\end{itemize}
+
 \subsection{Non-goals}
 
-\subsection{Vereisten}
+Naast einddoelen die de scope van de proof-of-concept vormen zijn er eveneens non-goals, vereisten die expliciet buiten de scope liggen:
+
+\begin{itemize}
+    \item Het is niet de bedoeling om een volledige softwarepakket te ontwikkelen, met error handling, unit tests, integratie tests, authenticatie en meer.\\
+
+    \item De proof-of-concept moet niet complexe tabellen kunnen verwerken. Hiermee worden voornamelijk tabellen bedoelt met meerdere niveau's van rijen en kolommen of tabellen met subtabellen.\\
+
+    \item Preprocessing van de inputafbeeldingen wordt niet uitgevoerd. Er wordt verwacht dat de documenten correct zijn ingescand.\\
+
+    \item Tabellen met handgeschreven tekst worden niet in beschouwing genomen.
+\end{itemize}
 
 \section{Selectie technologieën}
 \label{sec:selectie-technologieën}
 
+\subsection{Tabeldetectie en Tabelstructuuranalyse}
+
 \subsection{Programmeertaal}
 
 \subsection{Interne tabelmodel}
-
-\subsection{Tabeldetectie en Tabelstructuuranalyse}
 
 \subsection{OCR}
 
@@ -35,5 +59,4 @@
 
 \subsection{Front end}
 
-\section{Scoresysteem}
-\label{sec:scoresysteem}
+\label{sec:evaluatie-ysteem}
