@@ -27,7 +27,9 @@ Om een proof-of-concept succesvol te kunnen realiseren, moeten de volgende eindd
 
     \item Enkel open source software en libraries, zonder commercële restricties, mogen gebruikt worden.\\
 
-    \item De proof-of-concept moet kunnen functioneren op verschillende eenvoudige tabellayouts. D.w.z. dat de tabeltransformatie niet mag afhangen van de fysieke dimensies van de tabel zelf of van de cellen. Noch mag het afhankelijk zijn van het aantal rijen of kolommen. Verder moet de software contextonafhankelijk zijn; een voedingswaardetabel bijvoorbeeld moet even nauwkeurig getransformeerd kunnen worden als een medicatieschema.
+    \item De proof-of-concept moet kunnen functioneren op verschillende eenvoudige tabellayouts. D.w.z. dat de tabeltransformatie niet mag afhangen van de fysieke dimensies van de tabel zelf of van de cellen. Noch mag het afhankelijk zijn van het aantal rijen of kolommen. Verder moet de software contextonafhankelijk zijn; een voedingswaardetabel bijvoorbeeld moet even nauwkeurig getransformeerd kunnen worden als een medicatieschema.\\
+
+    \item Een tabeltransformatie moet kunnen uitgevoerd worden door een \Gls{REST}-server op te roepen. De tabeltransformatieresultaat die de server bij deze terug zal geven, moet een intuïtief, goed opgesteld \Gls{JSON}-object zijn.
 \end{itemize}
 
 \subsection{Non-goals}
@@ -115,13 +117,37 @@ Aangezien de tabeldetectiealgoritme van \textcite{Prasad2020} de meest performan
 
 \subsection{Programmeertaal}
 
+Voor de programmeertaal van de proof-of-concept wordt Python \autocite{VanRossum2009} gekozen, en dit voor verschillende redenen:
+
+\begin{itemize}
+    \item Python is een multifunctioneel programmeertaal die toelaat om eenvoudig en snel softwareprototypes te creëren.\\
+
+    \item Het heeft een grote bibliotheek van libaries voor onder meer statistiek en data-analyse, zoals Numpy \autocite{Oliphant2006} en Pandas \autocite{McKinney2010}.\\
+
+    \item De open source code van \textcite{Prasad2020} is reeds in Python geschreven. Door met Python verder te werken, kan code herbruikt worden en zal een een volledig nieuwe reïmplementatie van de software dus niet nodig worden.
+\end{itemize}
+
 \subsection{Interne tabelmodel}
 
-\subsection{OCR}
+Om de getransformeerd tabel te kunnen verwerken en verbeteren, moet de software van de proof-of-concept deze d.m.v. een datastructuur bijhouden. Hoewel voor de datastructuur JSON of XML gekozen kan worden, wordt er beslist om intern de getransformeerd tabel te presenteren en te verwerken d.m.v. een Pandas Dataframe. Een Pandas Dataframe is een twee dimensionele tabulaire datastructuur van de Pandas library. Deze datastructuur bestaat voornamelijk uit drie hoofdcomponenten, die in onderstaande figuur worden weergegeven: rijen, kolommen en data.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/pandas_dataframe.png}
+    \caption{Anatomie van een Pandas Dataframe. Bron: \textcite{GeeksforGeeks2020}}
+    \label{fig:anatomie-pandas-dataframe}
+\end{figure}
+
+Niet enkel modelleert een Pandas Dataframe, met zijn twee dimensionele structuur, op een gepaste manier een tabel maar het bezit eveneens andere voordelen. Zo kan de opgeslagen data heterogeen zijn, d.w.z. dat de datatypes van de data-elementen niet identiek hoeven te zijn. Verder bezit het meerdere functionaliteiten om data eenvoudig te manipuleren. Tenslotte kan een Pandas dataframe zeer efficiënt met grote hoeveelheden data werken.
+
+\subsection{\Gls{OCR}}
+
+Voor de \Gls{OCR}-component zijn er niet veel keuzes. Tesseract \autocite{Kay2007} is momenteel de enige \Gls{OCR}-software die open source is en nauwkeurig tekst in afbeeldingen detecteert en transformeert. Bovendien kan de Python library, Pytesseract \autocite{Lee2009}, gebruikt worden om Tesseract-functionaliteiten met Python te gebruiken. Zo kan men Tesseract functionaliteiten d.m.v. Pytesseract in Python code oproepen en kunnen de \Gls{OCR}-resultaten als een Pandas Dataframe verkregen worden.
 
 \subsection{Back end server}
 
+Voor de \Gls{REST}-server wordt Flask \autocite{Grinberg2018} gekozen. Flask is een eenvoudige micro web framework, bedoeld voor Python-softwareontwikkeling, met \Gls{REST}-ondersteuning.
+
 \subsection{Front end}
 
-\label{sec:evaluatie-ysteem}
-
+Er bestaan verschillende front end frameworks om snel en eenvoudig GUI's te ontwerpen die via de browser gebruikt zullen kunnen worden, zoals Angular \autocite{Jain2014} en React \autocite{Fedosejev2016}. Voor deze proof-of-concept wordt React gebruikt, in combinatie met de UI framework Ant Design \autocite{Financial2020}. De UI framework Ant Design biedt herbruikbare UI-componenten, onder meer voor tabulair data, die de ontwikkeling van de proof-of-concept vereenvoudigen en versnellen.
