@@ -47,7 +47,71 @@ Naast einddoelen die de scope van de proof-of-concept vormen zijn er eveneens no
 \section{Selectie technologieën}
 \label{sec:selectie-technologieën}
 
+Op basis van de literatuurstudie (\autoref{ch:stand-van-zaken}) en de systeemvereisten (\autoref{sec:systeemvereisten}) kan de selectie van algoritmes en technologieën plaatsvinden.
+
 \subsection{Tabeldetectie en Tabelstructuuranalyse}
+
+De verschillende algoritmes voor tabeldetectie en tabelstructuuranalyse, behandeld in de literatuurstudie (\autoref{ch:stand-van-zaken}), hebben elk hun voor- en nadelen. Deze voor- en nadelen worden in de volgende tabel \ref{tab:voor-en-nadelen-tabel-transformatie-technieken} weergegeven.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lccc@{}}
+\toprule
+                            & Werkt zonder lijnen & Bruikbaar op afbeelding & Diverse layouts \\ \bottomrule
+\multicolumn{4}{c}{\textit{Tabeldetectie}}                                                    \\ \toprule
+\citeauthor{Watanabe1991}   &                     & \checkmark              & \checkmark      \\ \midrule
+\citeauthor{Laurentini1992} &                     & \checkmark              & \checkmark      \\ \midrule
+\citeauthor{Pyreddy1997}    & \checkmark          &                         & \checkmark      \\ \midrule
+\citeauthor{Kieninger2001}  & \checkmark          & \checkmark              &                 \\ \midrule
+\citeauthor{Cesarini2002}   &                     & \checkmark              & \checkmark      \\ \midrule
+\citeauthor{Mandal2006}     & \checkmark          & \checkmark              &                 \\ \midrule
+\citeauthor{Silva2009}      &                     &                         & \checkmark      \\ \midrule
+\citeauthor{Kasar2013}      &                     & \checkmark              & \checkmark      \\ \midrule
+\citeauthor{Fan2015}        & \checkmark          & \checkmark              & \checkmark      \\ \midrule
+\citeauthor{Tran2015}       & \checkmark          & \checkmark              & \checkmark      \\ \midrule
+\citeauthor{Hao2016}        &                     &                         &                 \\ \midrule
+\citeauthor{Rashid2017}     & \checkmark          & \checkmark              &                 \\ \midrule
+\citeauthor{Gilani2017}     & \checkmark          & \checkmark              & \checkmark      \\ \midrule
+\citeauthor{Siddiqui2018}   & \checkmark          & \checkmark              & \checkmark      \\ \bottomrule
+\multicolumn{4}{c}{\textit{Tabelstructuuranalyse}}                                            \\ \toprule
+\citeauthor{Nazemi2016}     &                     & \checkmark              & \checkmark      \\ \midrule
+\citeauthor{Qasim2019}      & \checkmark          & \checkmark              & \checkmark      \\ \bottomrule
+\multicolumn{4}{c}{\textit{End-to-end-systemen}}                                              \\ \toprule
+\citeauthor{Green1996}      &                     & \checkmark              &                 \\ \midrule
+\citeauthor{Oro2009}        & \checkmark          &                         & \checkmark      \\ \midrule
+\citeauthor{Schreiber2017}  & \checkmark          & \checkmark              & \checkmark      \\ \midrule
+\citeauthor{Prasad2020}     & \checkmark          & \checkmark              & \checkmark      \\ \bottomrule
+\end{tabular}
+\caption{Voor- en nadelen van tabeltransformatiealgoritmes}
+\label{tab:voor-en-nadelen-tabel-transformatie-technieken}
+\end{table}
+
+Wat tabeldetectie betreft, bieden de algoritmes \autocite{Tran2015}, \autocite{Gilani2017} en \autocite{Siddiqui2018} alle voordelen aan. Alle drie technieken werken zonder de aanwezigheid van horizontale of verticale tabelscheidingslijnen. Ze kunnen direct gebruikt worden op afbeeldingen, en zijn dus niet afhankelijk van PDF-metadata bijvoorbeeld. Tenslotte kunnen ze tabellen van verschillende layouts detecteren.
+
+Van de technieken voor tabelstructuuranalyse heeft \autocite{Qasim2019} alle voordelen.
+
+Tenslotte bieden de end-to-end-technieken, \autocite{Schreiber2017} en \autocite{Prasad2020}, eveneens alle voordelen.
+
+Om het aantal kandidaatalgoritmes voor de proot-of-concept verder te verminderen, worden hun performanties met elkaar vergeleken. Omdat voor de tabelstructuuranalyse geen algoritmes te vinden zijn wiens performantiemeting met dezeflde methodologie uitgevoerd is, worden deze performanties niet in rekening gehouden. In onderstaande tabel \ref{tab:tabel-detectie-performanties} kan men de performantie van de verschillende technieken voor tabeldetectie terugvinden.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lccc@{}}
+\toprule
+                           & \Gls{Recall} & \Gls{Precisie} & \Gls{F1-score} \\ \midrule
+\citeauthor{Tran2015}      & 0,9636       & 0,9521         & 0,9578         \\ \midrule
+\citeauthor{Gilani2017}    & 0,9067       & 0,8230         & 0,8629         \\ \midrule
+\citeauthor{Siddiqui2018}  & 0,996        & 0,996          & 0,996          \\ \midrule
+\citeauthor{Schreiber2017} & 0,9615       & 0,9740         & 0,9677         \\ \midrule
+\citeauthor{Prasad2020}    & 1,0          & 1,0            & 1,0            \\ \bottomrule
+\end{tabular}
+\caption{Tabeldetectieperformanties van de verschillende algoritmes}
+\label{tab:tabel-detectie-performanties}
+\end{table}
+
+Deze performantiemetingen werden uitgevoerd op de \citefield{Gobel2013}{title} dataset. Dit is één van de meest bekende datasets voor tabeldetectie en tabelstructuuranalyse. Het bevat in totaal 238 ingescande documenten. Voor de berekening van de \Gls{F1-score} wordt bij deze dataset een \Gls{IoU} threshold van 0,5 gebruikt.
+
+Aangezien de tabeldetectiealgoritme van \textcite{Prasad2020} de meest performante is, wordt deze geselectioneerd als de tabeldetectiecomponent van de proof-of-concept. Voor de tabelstructuuranalyse kan men nog kiezen tussen \autocite{Qasim2019}, \autocite{Schreiber2017} en opnieuw \autocite{Prasad2020}. Hoewel \autocite{Qasim2019} en \autocite{Schreiber2017} gepaste keuzes zijn, wordt er beslist om voor de structuuranalyse eveneens \autocite{Prasad2020} te selectioneren. Dit komt voornamelijk omdat \textcite{Prasad2020} niet enkel hun volledige modeltrainingdataset maar ook de code-implementatie van hun algoritme openbaar hebben gemaakt, met een open source licentie.
 
 \subsection{Programmeertaal}
 
@@ -60,3 +124,4 @@ Naast einddoelen die de scope van de proof-of-concept vormen zijn er eveneens no
 \subsection{Front end}
 
 \label{sec:evaluatie-ysteem}
+

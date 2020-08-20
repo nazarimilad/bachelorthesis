@@ -10,6 +10,9 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage[acronym]{glossaries}
+\usepackage{booktabs}
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
 
 %%---------- Documenteigenschappen ---------------------------------------------
 
@@ -52,11 +55,6 @@
     name=tupel,
     description={In de wiskunde en de informatica is een tupel (ook tuple) een eindige rij van objecten. In een tupel is de volgorde van belang; als de objecten in een andere volgorde staan is het een ander tupel. Ook hoeven de objecten niet van hetzelfde datatype te zijn.}
 }
-\newglossaryentry{tabel}
-{
-    name=tabel,
-    description={Een hierarchische structuur gebruikt om data visueel eenvoudig weer te geven}
-}
 \newglossaryentry{Hidden Markov Model}
 {
     name=Hidden Markov Model,
@@ -70,17 +68,38 @@
 \newglossaryentry{ROI}
 {
     name=ROI,
-    description={Een Region Of Interest (ROI) is een subset van een dataset, geïdentificeerd voor een specifiek doel}
+    description={Een Region Of Interest (ROI) is een subset van een dataset, geïdentificeerd voor een specifiek doel.}
 }
 \newglossaryentry{CNN}
 {
     name=CNN,
-    description={Een Convolutionele Neuraal Netwerk (CNN) is een klasse van diepe neurale netwerken waarbij gebruik gemaakt wordt van een variatie van multilayer perceptrons ontworpen om minimale eisen voorbewerking}
+    description={Een Convolutionele Neuraal Netwerk (CNN) is een klasse van diepe neurale netwerken waarbij gebruik gemaakt wordt van een variatie van multilayer perceptrons ontworpen om minimale eisen voorbewerking.}
 }
 \newglossaryentry{GNN}
 {
     name=GNN,
-    description={Een Graaf Neuraal Netwerk (GNN) is een neurale netwerkarchitectuur die relaties en interacties tussen knopen kan modelleren en deze voorstellen als numerieke waarden}
+    description={Een Graaf Neuraal Netwerk (GNN) is een neurale netwerkarchitectuur die relaties en interacties tussen knopen kan modelleren en deze voorstellen als numerieke waarden.}
+}
+\newglossaryentry{IoU}
+{
+    name=IoU,
+    description={De Intersection Over Union (IoU) is een concept die veelal gebruikt wordt bij objectdetectie. De IoU kan men berekenen door de intersectieoppervlakte te delen over de unieoppervlakte van twee regio's: de ground truth regio en de voorspelde regio. Met de IoU wordt steeds een threshold gekoppeld. Indien men voor een threshold van 0,5 kiest en de IoU voor een voorspelling gelijk is of groter is dan de threshold van 0,5, dan heeft men een echt positief (true positive), anders heeft men te maken met een foutpositief. Een foutnegatief verkrijgt men wanneer een ground truth aanwezig is maar geen voorspelling gemaakt kon worden.}
+}
+
+\newglossaryentry{Recall}
+{
+    name=Recall,
+    description={De recall is een numerieke waarde die bepaald wordt door het aantal echt positieven te delen door de som van het aantal echt positieven en foutpositieven.}
+}
+\newglossaryentry{Precisie}
+{
+    name=Precisie,
+    description={De precisie is een numerieke waarde die bepaald wordt het aantal echt positieven te delen door de som van het aantal echt positieven en foutnegatieven.}
+}
+\newglossaryentry{F1-score}
+{
+    name=F1-score,
+    description={De F1-score is een numerieke waarde die men verkrijgt door de product van de \gls{Recall} en de \gls{Precisie} te delen door de som van de \gls{Recall} en de \gls{Precisie}, en deze waarde nog met 2 te vermenigvuldigen.}
 }
 
 
