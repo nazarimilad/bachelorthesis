@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <table>
+    <Coords points="275,289 275,686 1396,686 1396,289"/>
+    <cell end-col="0" end-row="0" start-col="0" start-row="0">
+      <Coords points="303,310 303,329 476,329 476,310"/>
+    </cell>
+    <cell end-col="1" end-row="0" start-col="1" start-row="0">
+      <Coords points="907,310 907,326 938,326 938,310"/>
+    </cell>
+    <cell end-col="2" end-row="3" start-col="2" start-row="0">
+      <Coords points="1178,325 1178,435 1289,435 1289,325"/>
+    </cell>
+    <cell end-col="0" end-row="1" start-col="0" start-row="1">
+      <Coords points="320,336 320,381 515,381 515,336"/>
+    </cell>
+    <cell end-col="2" end-row="1" start-col="1" start-row="1">
+      <Coords points="991,334 991,352 1057,352 1057,334"/>
+    </cell>
+    <cell end-col="2" end-row="1" start-col="2" start-row="1">
+      <Coords points="1180,336 1180,379 1291,379 1291,336"/>
+    </cell>
+    <cell end-col="0" end-row="2" start-col="0" start-row="2">
+      <Coords points="320,388 320,433 594,433 594,388"/>
+    </cell>
+    <cell end-col="2" end-row="2" start-col="1" start-row="2">
+      <Coords points="991,413 991,429 1058,429 1058,413"/>
+    </cell>
+    <cell end-col="2" end-row="2" start-col="2" start-row="2">
+      <Coords points="1180,388 1180,431 1291,431 1291,388"/>
+    </cell>
+    <cell end-col="0" end-row="3" start-col="0" start-row="3">
+      <Coords points="351,439 351,457 657,457 657,439"/>
+    </cell>
+    <cell end-col="2" end-row="3" start-col="1" start-row="3">
+      <Coords points="991,439 991,454 1058,454 1058,439"/>
+    </cell>
+    <cell end-col="2" end-row="3" start-col="2" start-row="3">
+      <Coords points="1205,439 1205,456 1325,456 1325,439"/>
+    </cell>
+    <cell end-col="0" end-row="4" start-col="0" start-row="4">
+      <Coords points="320,482 320,498 671,498 671,482"/>
+    </cell>
+    <cell end-col="2" end-row="4" start-col="1" start-row="4">
+      <Coords points="992,481 992,496 1058,496 1058,481"/>
+    </cell>
+    <cell end-col="2" end-row="4" start-col="2" start-row="4">
+      <Coords points="1205,482 1205,499 1325,499 1325,482"/>
+    </cell>
+    <cell end-col="0" end-row="5" start-col="0" start-row="5">
+      <Coords points="353,524 353,540 428,540 428,524"/>
+    </cell>
+    <cell end-col="2" end-row="5" start-col="1" start-row="5">
+      <Coords points="990,523 990,539 1058,539 1058,523"/>
+    </cell>
+    <cell end-col="2" end-row="5" start-col="2" start-row="5">
+      <Coords points="1205,524 1205,541 1325,541 1325,524"/>
+    </cell>
+    <cell end-col="0" end-row="6" start-col="0" start-row="6">
+      <Coords points="320,568 320,587 531,587 531,568"/>
+    </cell>
+    <cell end-col="2" end-row="6" start-col="1" start-row="6">
+      <Coords points="990,566 990,584 1058,584 1058,566"/>
+    </cell>
+    <cell end-col="2" end-row="6" start-col="2" start-row="6">
+      <Coords points="1180,568 1180,585 1291,585 1291,568"/>
+    </cell>
+    <cell end-col="0" end-row="7" start-col="0" start-row="7">
+      <Coords points="354,594 354,608 411,608 411,594"/>
+    </cell>
+    <cell end-col="2" end-row="7" start-col="1" start-row="7">
+      <Coords points="991,592 991,610 1059,610 1059,592"/>
+    </cell>
+    <cell end-col="2" end-row="7" start-col="2" start-row="7">
+      <Coords points="1180,594 1180,611 1291,611 1291,594"/>
+    </cell>
+    <cell end-col="0" end-row="9" start-col="0" start-row="8">
+      <Coords points="349,617 349,661 592,661 592,617"/>
+    </cell>
+    <cell end-col="2" end-row="9" start-col="1" start-row="8">
+      <Coords points="982,617 982,636 1060,636 1060,617"/>
+    </cell>
+    <cell end-col="0" end-row="9" start-col="0" start-row="9">
+      <Coords points="320,646 320,665 532,665 532,646"/>
+    </cell>
+    <cell end-col="2" end-row="9" start-col="1" start-row="9">
+      <Coords points="993,644 993,660 1061,660 1061,644"/>
+    </cell>
+    <cell end-col="2" end-row="9" start-col="2" start-row="9">
+      <Coords points="1205,645 1205,680 1325,680 1325,645"/>
+    </cell>
+  </table>
+</document>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <table>
+    <Coords points="542,1352 542,1893 1869,1893 1869,1352"/>
+    <cell end-col="0" end-row="0" start-col="0" start-row="0">
+      <Coords points="562,1397 562,1430 754,1430 754,1397"/>
+    </cell>
+    <cell end-col="1" end-row="0" start-col="1" start-row="0">
+      <Coords points="1278,1400 1278,1430 1383,1430 1383,1400"/>
+    </cell>
+    <cell end-col="2" end-row="0" start-col="2" start-row="0">
+      <Coords points="1632,1401 1632,1430 1660,1430 1660,1401"/>
+    </cell>
+    <cell end-col="0" end-row="1" start-col="0" start-row="1">
+      <Coords points="564,1475 564,1500 644,1500 644,1475"/>
+    </cell>
+    <cell end-col="2" end-row="1" start-col="1" start-row="1">
+      <Coords points="1499,1476 1499,1507 1607,1507 1607,1476"/>
+    </cell>
+    <cell end-col="2" end-row="1" start-col="2" start-row="1">
+      <Coords points="1729,1475 1729,1503 1843,1503 1843,1475"/>
+    </cell>
+    <cell end-col="0" end-row="2" start-col="0" start-row="2">
+      <Coords points="565,1532 565,1556 649,1556 649,1532"/>
+    </cell>
+    <cell end-col="2" end-row="2" start-col="1" start-row="2">
+      <Coords points="1501,1535 1501,1563 1607,1563 1607,1535"/>
+    </cell>
+    <cell end-col="2" end-row="2" start-col="2" start-row="2">
+      <Coords points="1729,1532 1729,1560 1843,1560 1843,1532"/>
+    </cell>
+    <cell end-col="2" end-row="3" start-col="2" start-row="3">
+      <Coords points="1762,1589 1762,1618 1843,1618 1843,1589"/>
+    </cell>
+    <cell end-col="2" end-row="4" start-col="2" start-row="4">
+      <Coords points="1761,1645 1761,1674 1843,1674 1843,1645"/>
+    </cell>
+    <cell end-col="0" end-row="5" start-col="0" start-row="5">
+      <Coords points="564,1723 564,1755 744,1755 744,1723"/>
+    </cell>
+    <cell end-col="2" end-row="5" start-col="1" start-row="5">
+      <Coords points="1430,1720 1430,1814 1613,1814 1613,1720"/>
+    </cell>
+    <cell end-col="2" end-row="5" start-col="2" start-row="5">
+      <Coords points="1725,1724 1725,1811 1843,1811 1843,1724"/>
+    </cell>
+    <cell end-col="2" end-row="6" start-col="2" start-row="6">
+      <Coords points="1618,1829 1618,1879 1839,1879 1839,1829"/>
+    </cell>
+  </table>
+</document>
