@@ -17,16 +17,15 @@
 %
 % LET OP! Een samenvatting is GEEN voorwoord!
 
-%%---------- Nederlandse samenvatting -----------------------------------------
-
-\IfLanguageName{english}{%
-\selectlanguage{dutch}
-\chapter*{Samenvatting}
-\selectlanguage{english}
-}{}
-
 %%---------- Samenvatting -----------------------------------------------------
 % De samenvatting in de hoofdtaal van het document
 
-\chapter*{Samenvatting}
+\chapter{Samenvatting}
 
+Dataverwerkingen worden veelal nog op niet-digitale wijze opgeslagen en gelezen, onder meer d.m.v. papier. Data wordt op papier veelal in tabulair vorm teruggevonden. Het doel van dit onderzoek is het creëren van een open source prototype-software die het mogelijk maakt om tabellen in ingescande documenten te digitaliseren. Dit zou niet enkel digitaliseringsprocessen versnellen maar zou het eveneens gebruikt kunnen worden voor verschillende digitalisatietaken, zoals de digitalisatie van medicatieschema's.
+
+Er werd eerst een literatuurstudie uitgevoerd om de stand van zaken rond tabeltransformatie te verduidelijken. Vervolgens zijn systeemvereisten en non-goals voor de proof-of-concept gespecifieerd. Op basis hiervan werden de algoritmes voor tabeltransformatie en de technologieën geselectioneerd. Hierna werd de proof-of-concept geïmplementeerd en in detail toegelicht, bovendien werd een nieuwe algoritme voorgesteld voor structuuranalyse. Uiteindelijk werd de software op een dertig tal afbeeldingen getest.
+
+Hoewel bij de test alle tabellen juist gedetecteerd werden, werd de nauwkeurigheid van de tabeltransformatie verlaagt door de minder performante tabelstructuuranalyse. De voorgestelde algoritme echter verhoogde de nauwkeurigheid van de structuuranalyse, al kan hierdoor de software nog niet als perfect beschouwd worden.
+
+Men kan bij dit onderzoek concluderen dat tabeltransformatie een complex domein is. Kant en klaar software-pakketten bestaan, maar zijn betalend en niet open source. Verder kan besloten worden dat tabelstructuuranalyse uit meerdere, van elkaar afhankelijke, subprocessen bestaat. Tenslotte kan men concluderen dat tabeldetectie enerzijds zeer nauwkeurig is, terwijl anderzijds structuuranalyse minder optimale resultaten kan leveren. De voorgestelde algoritme die een niet onbelangrijke verbetering van de tabeltransformaties teweegbrengt, toont aan dat optimalisatiemogelijkheden zeker nog mogelijk zijn.

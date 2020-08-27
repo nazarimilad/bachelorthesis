@@ -5,7 +5,7 @@
 \chapter{Proof of concept}
 \label{ch:proof-of-concept}
 
-De proof-of-concept wordt in dit hoofdstuk in detail behandeld. De verantwoordelijkheid en werking van de verschilende componenten wordt uitgelegd. Hiernaast wordt de flow (stroom) van de data verduidelijkt. Tenslotte wordt de installatie van de proof-of-concept-software uitgelegd.
+De proof-of-concept wordt in dit hoofdstuk in detail behandeld. De verantwoordelijkheid en werking van de verschillende componenten wordt uitgelegd. Hiernaast wordt de flow (stroom) van de data verduidelijkt. Tenslotte wordt de installatie van de proof-of-concept-software uitgelegd.
 
 \section{Architectuur}
 \label{sec:architectuur}
@@ -31,7 +31,7 @@ Wanneer de gebruiker de software wil gebruiken, zal hij/zij een GUI zien die in 
     \label{fig:gui-screenshot-not-used}
 \end{figure}
 
-De gebruiker klikt op de upload-zone, waar de tekst ``Click or drag file to this area to upload`` vermeld staat. Vervolgens selecteert de gebruiker de document die getransformeerd moet worden. Bij de bevestiging van de selectie van het bestand wordt deze geüpload naar de back end, waar preprocessing plaatsvindt.
+De gebruiker klikt op de upload-zone, waar de tekst ``Click or drag file to this area to upload`` vermeld staat. Vervolgens selecteert de gebruiker het document die getransformeerd moet worden. Bij de bevestiging van de selectie van het bestand wordt deze geüpload naar de back end, waar preprocessing plaatsvindt.
 
 \subsection{Preprocessing}
 \label{subsec:preprocessing}
@@ -63,7 +63,7 @@ In onderstaande figuren \ref{fig:tabel-detectie-origineel} en \ref{fig:tabel-det
 
 Zoals men kan zien in figuur \ref{fig:tabel-detectie-gedetecteerd}, worden niet enkel de tabellen zelf maar eveneens cellen gedetecteerd. De detectie van tabellen is zeer accuraat, hoewel de detectie van cellen niet even nauwkeurig is. In de figuur bijvoorbeeld werden sommige cellen niet gedetecteerd.
 
-Nadat de tabellen gedetecteerd zijn, worden ze bijgesneden om enkel de tabellen zelf te behouden en niet meer de rest van de document. Op elke geïsoleerd tabel worden de volgende stappen, tabelstructuuranalyse (\ref{subsec:tabel-structuur-analyse}) en postprocessing (\ref{subsec:post-processing}) uitgevoerd.
+Nadat de tabellen gedetecteerd zijn, worden ze bijgesneden om enkel de tabellen zelf te behouden en niet meer de rest van het document. Op elke geïsoleerd tabel worden de volgende stappen, tabelstructuuranalyse (\ref{subsec:tabel-structuur-analyse}) en postprocessing (\ref{subsec:post-processing}) uitgevoerd.
 
 \subsection{Tabelstructuuranalyse}
 \label{subsec:tabel-structuur-analyse}
@@ -88,7 +88,7 @@ Daarom worden enkele aanpassingen voorgesteld voor de tabelstructuuranalyse, die
 
 Voor bordered tabellen wordt een verbetering van de lijndetectie-algoritme voorgesteld.
 
-De verschilende stappen die genomen worden bij lijndetectie worden gedemonstreerd d.m.v. de volgende figuur \ref{fig:lijn-detectie-origineel}.
+De verschillende stappen die genomen worden bij lijndetectie worden gedemonstreerd d.m.v. de volgende figuur \ref{fig:lijn-detectie-origineel}.
 
 \begin{figure}[H]
     \centering
@@ -204,7 +204,7 @@ Met de volgende figuren \ref{fig:lines-detected-a} en \ref{fig:lines-detected-b}
 
 Zoals men kan zien, heeft algoritme A last van valse positieven. Er worden namelijk teveel lijnen gedetecteerd. Dit komt enerzijds omdat het de streep van de tekstelementen ``1`` als verticale lijnen detecteerd. Anderzijds wordt door afbeeldingruis een extra horizontaal lijn, rechts onderaan, gedetecteerd. Met algoritme B worden alle lijnen correct gedetecteerd.
 
-Voor borderless tabellen wordt een clusteringalgoritme voorgesteld, in combinatie met lijndetectie.
+Voor borderless tabellen wordt een clusteringalgoritme voorgesteld, in combinatie met lijndetectie. Bij borderless tabellen kan men een bepaalde patroon herkennen. Het verschil in X-positie tussen tekstblokken van verschillende kolommen is namelijk veel groter dan het verschil in X-positie tussen tekstblokken binnen dezelfde kolom. Overeenkomstig is het verschil in Y-positie tussen tekstblokken van verschillende rijden veel groter dan het verschil in Y-positie tussen tekstblokken binnen dezelfde rij. Dit betekent dat men cellen kan clusteren (groeperen) op basis van hun X-Y-positie in rij- en kolomclusters. Deze rij- en kolomclusters worden in relatie gebracht met bepaalde rij- en kolomindexen. Zo kan men door clustering aan elk cel een rij- en kolomindex toekennen. Een populair clusteringalgoritme is K-means-clustering. Echter moet hiervoor het aantal clusters meegegeven worden, wat niet mogelijk is aangezien het aantal rijen en kolommen van een willekeurig tabel niet op voorhand gekend is. Daarom wordt voor Algoritme B, voor de clustering van cellen van borderless tabellen, gebruikgemaakt van hiërarchische clustering die op basis van een maximum afstand werkt.
 
 \subsection{Postprocessing}
 \label{subsec:post-processing}

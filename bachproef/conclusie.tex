@@ -13,3 +13,11 @@
 % niet duidelijk zijn?
 % Heeft het onderzoek geleid tot nieuwe vragen die uitnodigen tot verder 
 %onderzoek?
+
+Uit dit onderzoek kan men enkele conclusies trekken. Zo kan men, uit de literatuurstudie (hoofdstuk \ref{ch:stand-van-zaken}) concluderen dat tabeltransformatie een complex domein is. Kant en klaar software-pakketten voor tabeltransformatie bestaan, echter zijn deze niet open source en betalend. Een open source versie bestaat momenteel niet.
+
+Verder kan men besluiten dan tabeltransformatie niet een simpel eenvoudig proces is, maar een complex procedure die uit verschillende subprocessen bestaat. Zo vindt preprocessing eerst plaats. Hierna wordt met tabeldetectie de tabellen van de rest van het document geïsoleerd. Vervolgens vindt de transformatie plaats d.m.v. structuuranalyse en \Gls{OCR}. Hierna wordt het resultaat verder behandeld door postprocessing. Uiteindelijk wordt de getransformeerd tabel terug naar de gebruiker gestuurd.
+
+Bovendien kan men de gevolgtrekking maken dat, afhankelijk van de gebruikte algoritmes, pre- en postprocessing ofwel noodzakelijk ofwel niet nodig zijn. Voor de proof-of-concept, bij gebruik van de voorgestelde algoritme, is postprocessing bijvoorbeeld noodzakelijk. Postprocessing bleek in het algemeen nodig te zijn voor de proof-of-concept, om nauwkeurig tabellen te kunnen detecteren.
+
+Tenslotte kan men concluderen dat tabeldetectie enerzijds zeer nauwkeurig is, terwijl anderzijds structuuranalyse minder optimale resultaten kan leveren. De algoritme voorgesteld in dit onderzoek, die een niet onbelangrijke verbetering van de tabeltransformaties heeft teweeggebracht, toont aan dat optimalisatiemogelijkheden zeker nog mogelijk zijn.
