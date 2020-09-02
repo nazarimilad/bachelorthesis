@@ -38,7 +38,7 @@
 \usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
 \usepackage{wrapfig} % Allows wrapping text around tables and figures
 \usepackage[export]{adjustbox}
-
+\usepackage[none]{hyphenat}
 \begin{document}
 
 %----------------------------------------------------------------------------------------
@@ -51,11 +51,11 @@
 % The widths of these boxes can be easily edited to accommodate your content as you see fit
 
 \begin{minipage}[t]{0.75\linewidth}
-\VeryHuge \color{HoGentAccent1} \textbf{Titel van uw bachelorproef} \color{Black}\\ % Title
-\Huge\textit{Ondertitel (eventueel)}\\[2.4cm] % Subtitle
-\huge \textbf{Naam Voornaam, co-promotor, promotor}\\[0.5cm] % Author(s)
+\VeryHuge \color{HoGentAccent1} \textbf{Automatische transformatie van ingescande tabellen naar gestructureerde digitale data} \color{Black}\\ % Title
+\Huge\textit{Een proof-of-concept}\\[2.4cm] % Subtitle
+\huge \textbf{Nazari Milad, Bram Vandewalle, Martijn Saelens}\\[0.5cm] % Author(s)
 \huge Hogeschool Gent, Valentin Vaerwyckweg 1, 9000 Gent\\[0.4cm] % University/organization
-\Large \texttt{voornaam.naam@hogent.be} \\
+\Large \texttt{contact@miladnazari.be} \\
 \end{minipage}
 %
 \begin{minipage}[t]{0.25\linewidth}
@@ -76,9 +76,7 @@
 \color{HoGentAccent1} % Navy color for the abstract
 
 \begin{abstract}
-It's only a model.
-You don't vote for kings. Who's that then? We found them. Ni! Ni! Ni! Ni!
-The nose? On second thoughts, let's not go there. It is a silly place. Bloody Peasant! And the hat. She's a witch! Where'd you get the coconuts?
+\noindent Met dit onderzoek wordt het ontwerp en ontwikkeling van een open source prototype-software bestudeerd die het mogelijk zou maken om tabellen in ingescande documenten te digitaliseren. Dit zou niet enkel digitaliseringsprocessen versnellen maar zou het eveneens gebruikt kunnen worden voor verschillende digitalisatietaken, zoals de digitalisatie van medicatieschema’s. Er wordt eerst een literatuurstudie uitgevoerd om de stand van zaken rond tabeltransformatie te verduidelijken. Vervolgens worden systeemvereisten en non-goals voor de proof-of-concept gespecifieerd. Op basis hiervan worden de algoritmes voor tabeltransformatie en de technologieën geselectioneerd. Hierna wordt de proof-of-concept in detail toegelicht, bovendien werd een nieuwe algoritme voorgesteld voor structuuranalyse. Uiteindelijk wordt de software op een dertig tal afbeeldingen getest. Hoewel bij de test alle tabellen juist gedetecteerd worden, wordt de nauwkeurigheid van de tabeltransformatie verlaagd door de minder performante tabelstructuuranalyse. De voorgestelde nieuwe algoritme echter verhoogt de nauwkeurigheid van de structuuranalyse, al kan hierdoor de software nog niet als perfect beschouwd worden. Men kan bij dit onderzoek concluderen dat tabeltransformatie een complex domein is. Kant en klaar software-pakketten bestaan, maar zijn betalend en niet open source. Verder kan besloten worden dat tabelstructuuranalyse uit meerdere, van elkaar afhankelijke, subprocessen bestaat. Tenslotte kan men concluderen dat tabeldetectie enerzijds zeer nauwkeurig is, terwijl anderzijds structuuranalyse minder optimale resultaten kan leveren. De voorgestelde algoritme die een niet onbelangrijke verbetering van de tabeltransformaties teweegbrengt, toont aan dat optimalisatiemogelijkheden zeker nog mogelijk zijn.
 \end{abstract}
 %----------------------------------------------------------------------------------------
 %	INTRODUCTION
@@ -88,64 +86,38 @@ The nose? On second thoughts, let's not go there. It is a silly place. Bloody Pe
 \section*{Introductie}
 \color{black}
 \color{black}
-Be quiet! Found them? In Mercia?! The coconut's tropical! But you are dressed as one… Well, what do you want? Knights of Ni, we are but simple travelers who seek the enchanter who lives beyond these woods.
+Alhoewel meer en meer processen wereldwijd volledig digitaal plaatsvinden, worden toch nog een grote deel van procedures en data opslag uitgevoerd op niet-digitale manieren. Zo krijgen de meeste mensen en bedrijven hun factures nog steeds per brief. Daarbovenop worden kassatickets nog steeds afgedrukt op papier, en notities nemen op papier blijft de populaire keuze hoewel er tal van notitie-apps bestaan. Deze voorbeelden tonen aan dat essentiële data nog massaal op een niet-digitale, en dus niet-automatisch verwerkbare media bewaard wordt, namelijk op papier.\\
 
-Well, what do you want? It's only a model. Camelot! We found them. We shall say 'Ni' again to you, if you do not appease us.
-
-The nose? Shut up! Burn her! I am your king. You don't vote for kings.
-
-You can't expect to wield supreme power just 'cause some watery tart threw a sword at you! Well, we did do the nose. I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
-
-Why do you think that she is a witch? We want a shrubbery!! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
-%----------------------------------------------------------------------------------------
-%	GEOLOGY
-%----------------------------------------------------------------------------------------
-
-\color{Black} % DarkSlateGray color for the rest of the content
-\color{HoGentAccent1} 
-\section*{Experimenten}
-\color{black}
-A newt? Camelot! Why? No, no, no! Yes, yes. A bit. But she's got a wart.
-
-Shut up! I dunno. Must be a king. Who's that then? Look, my liege! On second thoughts, let's not go there. It is a silly place.
-
-Shut up! Will you shut up?! No, no, no! Yes, yes. A bit. But she's got a wart. He hasn't got shit all over him. It's only a model. It's only a model.
-
-Bring her forward! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave 
-
-
-
-\color{HoGentAccent1} 
-\section*{Sectie met figuur}
-\color{black}
-
+\noindent Tot enkele jaren geleden was dit probleem niet zo beduidend maar nu meer digitale platformen voor dataverwerking gebruikt worden, is het omzetten van data op papier naar digitale data, m.a.w. het digitalisatieproces steeds belangrijker geworden. Tot heden bestaat er geen open source oplossing die tabellen in foto’s transformeert naar digitale tabellen, m.a.w. naar digitale structuren waarbij de tekst, evenals de relatie tussen de verschillende teksten getransformeerd wordt. Daarom werd er voor deze bachelorproef besloten om een proof-of-concept van een tabeltransformatiesoftware te creëren die bij een foto automatisch tabellen detecteert en deze tabellen digitaliseert.\\ \\
 
 \begin{center}\vspace{1cm}
-\includegraphics[width=1.0\linewidth]{grail}
-\captionof{figure}{\color{HoGentAccent5} He hasn't got shit all over him. The nose? Where'd you get the coconuts? What do you mean? We shall say 'Ni' again to you, if you do not appease us}
+\includegraphics[width=1.0\linewidth]{tabel_transformatie.png}
+\captionof{figure}{\color{HoGentAccent5} Tabeltransformatie}
 \end{center}\vspace{1cm}
 
-%------------------------------------------------
+\noindent Een open source tabeltransformatiesoftware zal automatisch bijv. medicatieschema’s kunnen omzetten in een uniform digitale datastructuur, zoals weergegeven in bovenstaande figuur. Hierdoor zal er geen manuele werk uitgevoerd moeten worden, wat tijd- en kostenreductie als positieve gevolgd heeft. Daarbovenop, omdat het open source zal zijn, zal men niet te maken hebben met softwarelicentiekosten of privacyschendingrisico's. Hoewel het digitaliseren van medicatieschema’s een belangrijke toepassing is, zijn er tal van andere potentiële toepassingen, aangezien tabellen zo vaak gebruikt worden. Zo zou men tabeltransformatie eveneens kunnen gebruiken voor het inscannen van kassatickets, het analyseren van een sudokuspel, het digitaal weergeven van een - op een whiteboard gemarkeerde - matrix voor online leerplatformen, het verwerken van een foto van een voedingswaardetabel op de verpakking van voedsel, en meer.
+\color{Black} % DarkSlateGray color for the rest of the content
+\color{HoGentAccent1} 
+\section*{Proof-of-concept en resultaten}
+\color{black}
+Zoals de volgende figuur het weergeeft, worden bij de proof-of-concept meerdere processen doorgelopen. Als eerst uploadt de gebruiker een afbeelding naar de transformatieserver d.m.v. de GUI. Vervolgens wordt de afbeelding verwerkt in de preprocessing-stap om de nauwkeurigheid van de tabeltransformatie te verhogen. Hierna worden de tabellen in de afbeelding gedetecteerd m.b.v. een diep neurale netwerk en geïsoleerd. Dan wordt elke geïsoleerd tabel getransformeerd in de structuuranalyse-stap waarin tekstherkenning, lijndetectie, cellsegmentatie en hiërarchische clustering plaatsvinden (voorgestelde algoritme). Een postprocessing-stap wordt eveneens uitgevoerd om de nauwkeurigheid verder te verhogen. Uiteindelijk worden de getransformeerde tabellen in JSON-formaat teruggestuurd naar de gebruiker.
 
+\begin{center}\vspace{1cm}
+\includegraphics[width=0.8\linewidth]{proof_of_concept_architectuur.png}
+\captionof{figure}{\color{HoGentAccent5} Architectuur van de proof-of-concept}
+\end{center}\vspace{1cm}
 
+\noindent Hoewel bij de performantietest alle tabellen juist gedetecteerd werden, werd de nauwkeurigheid van de tabeltransformatie verlaagt door de minder performante tabelstructuuranalyse. De voorgestelde algoritme echter verhoogde de nauwkeurigheid van de structuuranalyse, al kan hierdoor de software nog niet als perfect beschouwd worden.
+
+\begin{center}\vspace{1cm}
+\includegraphics[width=1.0\linewidth]{resultaat_voorbeeld_proof_of_concept.png}
+\captionof{figure}{\color{HoGentAccent5} Voorbeeld tabeltransformatie d.m.v. proof-of-concept}
+\end{center}\vspace{1cm}
 
 \color{HoGentAccent1} 
 \section*{Conclusies}
 \color{black}
-on't underestimate the Force. Oh God, my uncle. How am I ever gonna explain this? I suggest you try it again, Luke. This time, let go your conscious self and act on instinct. Don't be too proud of this technological terror you've constructed. The ability to destroy a planet is insignificant next to the power of the Force.
-%----------------------------------------------------------------------------------------
-%	FORTHCOMING RESEARCH
-%----------------------------------------------------------------------------------------
+Men kan bij dit onderzoek concluderen dat tabeltransformatie een complex domein is. Kant en klaar software-pakketten bestaan, maar zijn betalend en niet open source. Een open source versie bestaat momenteel niet. Verder kan besloten worden dat tabelstructuuranalyse niet een simpel eenvoudig proces is. Eerder is het een complex procedure die uit meerdere, van elkaar afhankelijke, subprocessen bestaat. Tenslotte kan men concluderen dat tabeldetectie enerzijds zeer nauwkeurig is, terwijl anderzijds structuuranalyse minder optimale resultaten kan leveren. De voorgestelde algoritme die een niet onbelangrijke verbetering van de tabeltransformaties teweegbrengt, toont aan dat optimalisatiemogelijkheden zeker nog mogelijk zijn.
 \color{HoGentAccent1} 
-\section*{Toekomstig onderzoek}
-\color{black}
-
-I care. So, what do you think of her, Han? No! Alderaan is peaceful. We have no weapons. You can't possibly… I have traced the Rebel spies to her. Now she is my only link to finding their secret base.
-
-Kid, I've flown from one side of this galaxy to the other. I've seen a lot of strange stuff, but I've never seen anything to make me believe there's one all-powerful Force controlling everything. There's no mystical energy field that controls my destiny. It's all a lot of simple tricks and nonsense. You are a part of the Rebel Alliance and a traitor! Take her away! 
-
-
-%----------------------------------------------------------------------------------------
-
 \end{multicols}
 \end{document}
